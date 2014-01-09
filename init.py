@@ -58,7 +58,7 @@ resultString = ''
 if 'http://slashdot.org/' in browserUrl.lower():
     print('Logged In')
     #get the older button
-    olderAhref = soup.find(class_='prevnextbutact')
+    olderAhref = soup.find("a", { "class" : "prevnextbutact" })
     #only read the page while the second button found on html does not contain the word Newer
     while 'Newer' not in olderAhref.getText():
         try:
@@ -66,14 +66,14 @@ if 'http://slashdot.org/' in browserUrl.lower():
             urlNext = urlparse.urljoin('http:', olderAhref['href'], allow_fragments=True)
             olderAhref['absolute_url']= urlNext
             #get all spans with a id that startswith 'title-'
-            storyIds = soup.find_all('span', id=lambda x: x and x.startswith('title-'))
+            storyIds = soup.findAll("h2", { "class" : "story"})
             #loop through id to get the details of the story
             for storyid in storyIds:
-                sid = storyid['id']
+                sid = storyid.span['id']
                 sdid = 'details-' + sid[6:]
                 stid = 'fhtime-' + sid[6:]
-                storyDetail = soup.find('div', id=lambda x: x and x.startswith(sdid))
-                storyDateTime = soup.find('time', id=lambda x: x and x.startswith(stid))
+                storyDetail = soup.find('div', id=sdid)
+                storyDateTime = soup.find('time', id=stid)
                 storyTitle = storyid.a.getText()
                 storyAuthor = storyDetail.a.getText()
                 storyTime = storyDateTime.getText()
@@ -89,7 +89,7 @@ if 'http://slashdot.org/' in browserUrl.lower():
             html = br.response().read()
             soup = BeautifulSoup.BeautifulSoup(html)
             #Here we find the older control button
-            olderAhref = soup.find_all(class_='prevnextbutact')[1]
+            olderAhref = soup.findAll("a", { "class" : "prevnextbutact" })[1]
 
             if 'Newer' in olderAhref.getText():
                 break
