@@ -44,7 +44,7 @@ except ValueError:
 try:
     #Read the browser response from form submission and make your soup using BS
     html = br.response().read()
-    soup = BeautifulSoup(html)
+    soup = BeautifulSoup.BeautifulSoup(html)
     #Get the current url to valuate if your login was succesfull
     #in this case if the url is 'http://slashdot.org/' the your login worked if its 'https://slashdot.org/my/login'
     #the your login failed and you where returned to the login page
@@ -87,7 +87,7 @@ if 'http://slashdot.org/' in browserUrl.lower():
 #We have the next url to follow and have got all the older stories now to open that page and read then soup it up
             br.open(urlNext)
             html = br.response().read()
-            soup = BeautifulSoup(html)
+            soup = BeautifulSoup.BeautifulSoup(html)
             #Here we find the older control button
             olderAhref = soup.find_all(class_='prevnextbutact')[1]
 
