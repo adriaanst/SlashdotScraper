@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77ac152b-d572-432d-ba0b-757720041a9b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/init.py" afterPath="$PROJECT_DIR$/init.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SlashdotScraper.iws" />
@@ -356,6 +355,11 @@
       <created>1389095540472</created>
       <updated>1389095540472</updated>
     </task>
+    <task id="LOCAL-00001" summary="Final Commit for final changes">
+      <created>1390294009710</created>
+      <updated>1390294009710</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -390,6 +394,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Final Commit for final changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final Commit for final changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
