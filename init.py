@@ -83,8 +83,15 @@ if 'http://slashdot.org/' in browserUrl.lower():
                 strFormatedTime = str(formatedTime)
                 #if the story is older than our entered date then it must be added to the list of stories in the resulting string
                 if dt_start > datetime.datetime.strptime(strTime, "%A %B %d, %Y %H:%M"):
+                    print("Adding Story :" +storyTitle)
                     resultString = resultString + ' {\n headline: ' + storyTitle + ',\n author: ' + storyAuthor + ',\n date: ' + strFormatedTime + '\n },\n'
 #We have the next url to follow and have got all the older stories now to open that page and read then soup it up
+            #cut the last trailing comma from the story list
+            storyList = resultString[:-2]
+            #print the story list with square brackets enclosing it
+            if len(storyList) > 1:
+                print('[\n' + storyList + '\n]')
+            resultString = ""
             br.open(urlNext)
             html = br.response().read()
             soup = BeautifulSoup.BeautifulSoup(html)
@@ -98,11 +105,6 @@ if 'http://slashdot.org/' in browserUrl.lower():
 #handle invalid login
 elif 'https://slashdot.org/my/login' in browserUrl.lower():
     print('Login Failed')
-
-#cut the last trailing comma from the story list
-storyList = resultString[:-2]
-#print the story list with square brackets enclosing it
-print('[\n' + storyList + '\n]')
 #Close Browser
 br.close()
 
